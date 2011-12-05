@@ -7,7 +7,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @posts }
-      format.js  
+      format.js  { render :html => 'post'}
     end
   end
   # GET /posts/1
@@ -30,7 +30,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @post }
-      format.js 
+      format.js { render :html => 'post'}
     end
   end
 

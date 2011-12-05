@@ -1,10 +1,14 @@
 $(function() {
-  $("#posts th a, #posts .pagination a").live("click", function() {
+  $("#posts th a, #postpage .pagination a").live("click", function() {
     $.getScript(this.href);
     return false;
   });
-  $("#posts_search input").keyup(function() {
-    $.get($("#posts_search").attr("action"), $("#posts_search").serialize(), null, "script");
+  $('#search').submit(function () {
+    $.get(this.action, $(this).serialize(), null, 'script');
+    return false;
+  });
+  $("#new_post a").live("click", function() {
+    $.getScript(this.href);
     return false;
   });
 });
