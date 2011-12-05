@@ -1,0 +1,1 @@
+page.replace_html :posts, :partial => 'post', :object => @posts

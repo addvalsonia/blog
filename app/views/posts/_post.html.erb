@@ -1,0 +1,49 @@
+
+<html>
+	<style type="text/css">
+		table { border-width: 7px; 
+			border-style: outset; } 
+		td { border-width: medium; 
+			border-style: outset; }
+	</style>
+
+<div align="center" >
+		<div align="right">
+		<% form_tag posts_path, :method => 'get' do %>
+				<%= hidden_field_tag :direction, params[:direction] %>
+		  		<%= hidden_field_tag :sort, params[:sort] %>
+				<%= text_field_tag :search, params[:search] %>
+				<%= submit_tag "Search Blog", :title => nil %>
+		<% end %>
+		
+	</div>	
+
+	<h1>Listing posts</h1><br /><br />
+
+	<table cellpadding="4" cellspacing="5">
+	  <tr>
+	    <th><%= sortable "title"%></th>
+	    <th><%= sortable "body"%></th>
+	    <th><%= sortable "created at"%></th>
+	    <th colspan="3">Actions</th>
+	  </tr>
+	
+	<% @posts.each do |post| %>
+	  <tr id="post_<%= post.id %>">
+	    <td><%=h post.title %></td>
+	    <td><%=h post.body %></td>
+	    <td><%=h post.created_at %></td>
+	    <td><%= link_to_remote 'Show', :url => post_path(post) , :method => :get %></td>
+	    <td><%= link_to_remote 'Edit', :url => edit_post_path(post), :method => :get %></td>
+	    <td><%= link_to_remote 'Destroy', :url => post_path(post), :confirm => 'Are you sure?', :method => :delete %></td>
+	  </tr>
+	<% end %>
+	</table>
+<br />
+<%= link_to_remote 'New post', :url=> new_post_path, :method => :get %> 
+<%= will_paginate @posts%>
+	
+</div>
+
+</html>
+

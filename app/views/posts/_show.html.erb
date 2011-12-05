@@ -1,0 +1,18 @@
+<p>
+  <b>Title:</b>
+  <%=h @post.title %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%=h @post.body %>
+</p>
+
+<p>
+  <b>Created at:</b>
+  <%=h @post.created_at %>
+</p>
+
+
+<%= link_to_remote 'Edit', :url => edit_post_path(@post), :method => :get %> |
+<%= link_to_remote 'Back', :url => posts_path, :method => :get %>
