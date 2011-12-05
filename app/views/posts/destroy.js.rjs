@@ -1,1 +1,0 @@
-page.remove "post_#{@post.id}"

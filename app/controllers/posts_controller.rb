@@ -18,7 +18,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @post }
-      format.js
+      format.js { render :html => 'show'}
     end
   end
 
@@ -30,7 +30,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @post }
-      format.js { render :html => 'post'}
+      format.js
     end
   end
 
@@ -46,10 +46,9 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        flash[:notice] = 'Post was successfully created.'
-        format.html { redirect_to(@post) }
-        format.xml  { render :xml => @post, :status => :created, :location => @post }
-        format.js
+        flash[:notice] = 'Post created successfully.'
+        format.html { redirect_to(posts_url) }
+        format.js 
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @post.errors, :status => :unprocessable_entity }
@@ -64,7 +63,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.update_attributes(params[:post])
-        flash[:notice] = 'Post was successfully updated.'
+        flash[:notice] = 'Post updated successfully.'
         format.html { render :partial => 'show', :locals => { :url => post_path(@post) , :method => :get } }
         format.xml  { head :ok }
         format.js
@@ -84,9 +83,10 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(posts_url) }
       format.xml  { head :ok }
-      format.js
+      format.js { render :html => 'post'}
     end
-  end  
+  end
+  
   def sort_column
     Post.column_names.include?(params[:sort]) ? params[:sort] : "title"
   end
