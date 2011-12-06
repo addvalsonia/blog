@@ -1,6 +1,6 @@
 <h1 align="center">Listing posts</h1><br /><br />
 
-	<table cellpadding="4" cellspacing="5">
+	<table width="100%" cellpadding="4" cellspacing="5">
 	  <tr>
 	    <th><%= sortable "title"%></th>
 	    <th><%= sortable "body"%></th>
@@ -15,13 +15,13 @@
 	    <td><%=h post.created_at %></td>
 	    <td><%= link_to_remote 'Show', :url => post_path(post) , :method => :get %></td>
 	    <td><%= link_to_remote 'Edit', :url => edit_post_path(post), :method => :get %></td>
-	    <td><%= link_to_remote 'Destroy', :url => post_path(post), :confirm => 'Are you sure?', :html => {:id => "destroy", :method => :delete } %></td>
+	    <td><%= link_to 'Destroy', posts_path(post), :confirm => 'Are you sure?', :method => :delete %></td>
 	  </tr>
 	<% end %>
 	</table>
 <br />
 <%= link_to_remote 'New post', :url=> new_post_path, :html => { :id => "new_post", :method => :get } %> 
-<div id="postpage">
+<div id="postpage" align="bottom">
 	<%= page_entries_info @posts %>
 	<%= will_paginate @posts%>
 </div>

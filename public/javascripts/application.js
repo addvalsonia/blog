@@ -7,4 +7,9 @@ $(function() {
     $.get(this.action, $(this).serialize(), null, 'script');
     return false;
   });
+  $("#back_link").live("click", function() {
+    $("#middle_div").hide();
+    return false;
+  });
+  
 });

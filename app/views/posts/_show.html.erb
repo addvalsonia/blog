@@ -1,19 +1,32 @@
-<p>
-  <b>Title:</b>
-  <%=h @post.title %>
-</p>
-
-<p>
-  <b>Body:</b>
-  <%=h @post.body %>
-</p>
-
-<p>
-  <b>Created at:</b>
-  <%=h @post.created_at %>
-</p>
-
-
+<table>
+	<tr >
+		<h4><%=h @post.title %> Post</h4>
+	</tr>
+	<tr>
+		<td>
+			<b>Title:</b>	
+		</td>
+		<td>
+			<%=h @post.title %>		
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<b>Body:</b>		
+		</td>
+		<td>
+			<%=h @post.body %>		
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<b>Created at:</b>		
+		</td>
+		<td>
+			<%=h @post.created_at %>
+		</td>
+	</tr>
+</table>
 
 <%= link_to_remote 'Edit', :url => edit_post_path(@post), :method => :get %> |
-<%= link_to_remote 'Back', :url => posts_path, :method => :get %>
+<%= link_to_remote 'Back', :url => posts_path, :html => { :id => "back_link", :method => :get } %>

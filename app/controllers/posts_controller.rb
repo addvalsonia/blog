@@ -43,12 +43,12 @@ class PostsController < ApplicationController
   # POST /posts.xml
   def create
     @post = Post.new(params[:post])
-
+    
     respond_to do |format|
       if @post.save
         flash[:notice] = 'Post created successfully.'
-        format.html { redirect_to(posts_url) }
-        format.js 
+        format.html { redirect_to(posts_url)}
+        format.js
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @post.errors, :status => :unprocessable_entity }
@@ -64,7 +64,7 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.update_attributes(params[:post])
         flash[:notice] = 'Post updated successfully.'
-        format.html { render :partial => 'show', :locals => { :url => post_path(@post) , :method => :get } }
+        format.html { redirect_to(posts_url) }
         format.xml  { head :ok }
         format.js
     else
@@ -83,7 +83,6 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(posts_url) }
       format.xml  { head :ok }
-      format.js { render :html => 'post'}
     end
   end
   

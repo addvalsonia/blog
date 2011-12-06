@@ -20,5 +20,5 @@
   </p>
 <% end %>
 
-<%= link_to_remote 'Show', :url => post_path(@post), :method => :get %> |
+<%= link_to_remote 'Show', :url => post_path(@post), :html => { :id => "back_link", :method => :get }  %> |
 <%= link_to_remote 'Back', :url => posts_path, :method => :get %>

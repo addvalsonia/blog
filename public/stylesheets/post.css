@@ -1,0 +1,19 @@
+td { border-width: medium; 
+		border-style: outset;
+		 }
+#container {
+min-height: 100%;
+background-color: #DDD;
+border-left: 2px solid #666;
+border-right: 2px solid #666;
+width: 1000px;
+margin: 0 auto;
+height: 1000px
+}
+#new_post{
+	color: #444;
+    float: none;
+    font: normal 17px arial, sans-serif;
+    height: 24px;
+    margin-right: 6px;
+}

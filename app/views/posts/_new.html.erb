@@ -1,23 +1,39 @@
 <h1>New post</h1>
-
-<% form_for(@post) do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.label :body %><br />
-    <%= f.text_area :body %>
-  </p>
-  <p>
-    <%= f.label :created_at %><br />
-    <%= f.datetime_select :created_at %>
-  </p>
-  <p>
-    <%= f.submit 'Create' %>
-  </p>
-<% end %>
-
-<%= link_to_remote 'Back', :url => posts_path, :method => :get %>
+<table>
+	<% form_for(@post) do |f| %>
+	  <%= f.error_messages %>
+	<tr>
+		<td>
+		    <%= f.label :title %><br />		
+		</td>
+		<td>
+	    	<%= f.text_field :title %>			
+		</td>
+	</tr>
+	<tr>
+	  	<td>
+		    <%= f.label :body %><br />	  		
+	  	</td>
+	  	<td>
+	    	<%= f.text_area :body %>	  		
+	  	</td>
+	</tr>
+	<tr>
+	  	<td>
+		    <%= f.label :created_at %><br />			
+	  	</td>
+	  	<td>
+	    <%= f.datetime_select :created_at %>	  		
+	  	</td>
+	</tr>
+	<tr>
+		<td>
+		    <%= f.submit 'Create' %>			
+		</td>
+		<td>
+		    <%= link_to_remote 'Back', :url => posts_path, :html => { :id => "back_link", :method => :get } %>		
+		</td>
+	</tr>
+	<% end %>
+	
+</table>
